@@ -5,6 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:uk": "NEXT_PUBLIC_LOCALE=uk next build",
+    "build:en": "NEXT_PUBLIC_LOCALE=en next build",
+    "build:ru": "NEXT_PUBLIC_LOCALE=ru next build",
+    "build:pl": "NEXT_PUBLIC_LOCALE=pl next build",
+    "build:all": "npm run build:uk && npm run build:en && npm run build:ru && npm run build:pl",
+    "dist:all": "bash -c 'rm -rf dist && for loc in uk en ru pl; do NEXT_PUBLIC_LOCALE=$loc npx next build && mkdir -p dist/$loc && cp -r out/* dist/$loc/; done'",
     "start": "next start",
     "lint": "eslint"
   },

@@ -40,3 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .netlify/
+
+# build output per locale
+/dist/
+
+# deploy script (contains server details)
+deploy.sh
+
+# local docs
+/docs/

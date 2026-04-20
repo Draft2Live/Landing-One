@@ -1,9 +1,10 @@
 'use client';
 import { useTranslations } from 'next-intl';
+import { subdomains } from '@/config/subdomains';
 
 const productHrefs = ['#features', '#pricing', '#', '#', '#'];
 const companyHrefs = ['#', '#', 'mailto:info@draft2live.ai', '#'];
-const languageHrefs = ['/uk/', '/en/', '/ru/', '/pl/'];
+const languageHrefs = [subdomains.uk, subdomains.en, subdomains.ru, subdomains.pl];
 const legalHrefs = ['/terms', '/privacy', '/cookies'];
 
 function LinkedInIcon() {

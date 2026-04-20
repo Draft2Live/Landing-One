@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { routing } from '@/i18n/routing';
+import { subdomains, allLocales } from '@/config/subdomains';
 import { EarlyAccessProvider } from '@/lib/EarlyAccessContext';
 import EarlyAccessModal from '@/components/ui/EarlyAccessModal';
 import LangSync from '@/components/ui/LangSync';
@@ -22,18 +23,15 @@ export async function generateMetadata({
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: `/${locale}/`,
-      languages: {
-        uk: '/uk/',
-        en: '/en/',
-        ru: '/ru/',
-        pl: '/pl/',
-      },
+      canonical: subdomains[locale],
+      languages: Object.fromEntries(
+        allLocales.map((loc) => [loc, subdomains[loc]]),
+      ),
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: `https://draft2live.ai/${locale}/`,
+      url: subdomains[locale],
       siteName: 'Draft2Live',
       locale: locale === 'uk' ? 'uk_UA' : locale === 'ru' ? 'ru_RU' : locale === 'pl' ? 'pl_PL' : 'en_US',
       type: 'website',
